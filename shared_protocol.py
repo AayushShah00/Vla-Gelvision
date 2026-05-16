@@ -2,11 +2,7 @@ import struct
 import numpy as np
 
 class RobotProtocol:
-    """
-    Standardized memory layout for low-overhead UDP serialization.
-    Prevents JSON parsing overhead inside the 100Hz RTOS loop.
-    """
-    # Format: 6 Floats (Joint Vels) + 1 Float (Gripper) + 1 Integer (Safety State flag)
+    # 6 Joint velocities (float) + 1 Gripper target (float) + 1 Safety flag (int)
     PACK_FORMAT = "!7fi" 
     PACK_SIZE = struct.calcsize(PACK_FORMAT)
 
